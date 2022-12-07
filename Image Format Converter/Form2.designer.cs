@@ -1,5 +1,5 @@
 ﻿
-namespace HEIC_Converter
+namespace Image_Format_Converter
 {
     partial class Form2
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{109365D5-D583-491F-967C-B5AD2AB4366C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>HEIC_Converter</RootNamespace>
-    <AssemblyName>HEIC Converter</AssemblyName>
+    <RootNamespace>Image_Format_Converter</RootNamespace>
+    <AssemblyName>Image Format Converter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

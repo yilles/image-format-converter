@@ -10,7 +10,7 @@ using System.IO;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ImageMagick;
 
-namespace HEIC_Converter
+namespace Image_Format_Converter
 {
     public enum ImageFormat
     {
@@ -28,7 +28,7 @@ namespace HEIC_Converter
         string OutputDir = "";
         string ShowImagePath = "";
         int ProcessValue = -1;
-        string Version = "1.0.1";
+        string Version = "1.1.0";
         public Form1()
         {
             InitializeComponent();
@@ -39,8 +39,8 @@ namespace HEIC_Converter
         {
             using (var _openFileDialog = new OpenFileDialog())
             {
-                _openFileDialog.Title = "選取HEIC(多選)";
-                _openFileDialog.Filter = "HEIC files (*.HEIC)|*.HEIC";;
+                _openFileDialog.Title = "選取圖片(多選)";
+                _openFileDialog.Filter = "Image files (*.JPG/*JPEG/*PNG/*BMP/*HEIC)|*JPG;*JPEG;*PNG;*BMP;*.HEIC";
                 _openFileDialog.Multiselect = true;
                 if (_openFileDialog.ShowDialog() == DialogResult.OK)
                 {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HEIC_Converter
+namespace Image_Format_Converter
 {
     public partial class Form2 : Form
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace HEIC_Converter
+namespace Image_Format_Converter
 {
     static class Program
     {
