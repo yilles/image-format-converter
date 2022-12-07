@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HEIC Converter", "HEIF Converter\HEIC Converter.csproj", "{109365D5-D583-491F-967C-B5AD2AB4366C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HEIF Converter", "Image Format Converter\Image Format Converter.csproj", "{109365D5-D583-491F-967C-B5AD2AB4366C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
