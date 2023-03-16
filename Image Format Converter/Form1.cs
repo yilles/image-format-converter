@@ -28,7 +28,7 @@ namespace Image_Format_Converter
         string OutputDir = "";
         string ShowImagePath = "";
         int ProcessValue = -1;
-        string Version = "1.1.0";
+        string Version = "1.1.1";
         public Form1()
         {
             InitializeComponent();
@@ -51,6 +51,8 @@ namespace Image_Format_Converter
                         var _onlyFileName = Path.GetFileName(_file);
                         listBox1.Items.Add(_onlyFileName);
                     }
+                    if (listBox1.Items.Count > 0)
+                        listBox1.SelectedIndex = 0;
                 }
             }
         }
@@ -91,6 +93,8 @@ namespace Image_Format_Converter
                 {
                     OutputDir = _commonOpenFileDialog.FileName;
                     string _onlyTheLastDirectoryName = Path.GetFileName(OutputDir);
+                    if (_onlyTheLastDirectoryName == string.Empty)
+                        _onlyTheLastDirectoryName = Path.GetPathRoot(OutputDir);
                     button6.Text = _onlyTheLastDirectoryName;
                     button6.Visible = true;
                 }
