@@ -12,6 +12,13 @@ using ImageMagick;
 
 namespace Image_Format_Converter
 {
+    public enum ResizeImageType
+    {
+        None,
+        BaseHeight,
+        BaseWidth
+    }
+
     public enum ImageFormat
     {
         None,
@@ -23,12 +30,13 @@ namespace Image_Format_Converter
     public partial class Form1 : Form
     {
         Form2 fm2 = new Form2();
+        Form3 fm3 = new Form3();
         ImageFormat ImgFormat = ImageFormat.None;
         string InputDir = "";
         string OutputDir = "";
         string ShowImagePath = "";
         int ProcessValue = -1;
-        string Version = "1.1.1";
+        string Version = "1.1.2";
         public Form1()
         {
             InitializeComponent();
@@ -121,6 +129,50 @@ namespace Image_Format_Converter
             }
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string _resizeInfo = "";
+            string _height = "";
+            string _width = "";
+            if (fm3.ShowDialog() == DialogResult.Cancel)
+            {
+                _height = string.Format("{0}", fm3.ResizeImageHeight);
+                _width = string.Format("{0}", fm3.ResizeImageWidth);
+
+                if (fm3.ResizeEnabled)
+                {
+                    if (!fm3.IgnoreAspectRatio)
+                    {
+                        switch (fm3.ResizeImageType)
+                        {
+                            case ResizeImageType.None:
+                                break;
+                            case ResizeImageType.BaseHeight:
+                                _resizeInfo += "啟用" + Environment.NewLine + 'H' + _height;
+                                break;
+                            case ResizeImageType.BaseWidth:
+                                _resizeInfo += "啟用" + Environment.NewLine + "W" +_width;
+                                break;
+                            default:
+                                break;
+                        }
+
+                    }
+                    else
+                    {
+                        _resizeInfo += "啟用" + Environment.NewLine + 'H' + _height + 'x' + "W" +_width;
+                    }
+                }
+                else
+                {
+                    _resizeInfo += "未啟用";
+                }
+
+                button9.Text = _resizeInfo;
+                button9.Visible = true;
+            }
+        }
+
         private void button7_Click(object sender, EventArgs e)
         {
             progressBar1.Maximum = listBox1.Items.Count;
@@ -178,6 +230,40 @@ namespace Image_Format_Converter
                                 MessageBox.Show(ex.Message);
                             }
                         }
+
+                        // This will resize the image to a fixed size without maintaining the aspect ratio.
+                        // Normally an image will be resized to fit inside the specified size.
+                        if (fm3.ResizeEnabled)
+                        {
+                            MagickGeometry _size;
+                            if (!fm3.IgnoreAspectRatio)
+                            {
+                                switch (fm3.ResizeImageType)
+                                {
+                                    case ResizeImageType.None:
+                                        break;
+                                    case ResizeImageType.BaseHeight:
+                                        _size = new MagickGeometry(0, fm3.ResizeImageHeight);
+                                        _size.IgnoreAspectRatio = false;
+                                        _img.Resize(_size);
+                                        break;
+                                    case ResizeImageType.BaseWidth:
+                                        _size = new MagickGeometry(fm3.ResizeImageWidth, 0);
+                                        _size.IgnoreAspectRatio = false;
+                                        _img.Resize(_size);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                _size = new MagickGeometry(fm3.ResizeImageWidth, fm3.ResizeImageHeight);
+                                _size.IgnoreAspectRatio = true;
+                                _img.Resize(_size);
+                            }
+                        }
+
                         // Write the image to the file
                         _img.Write(_outputImagePath);
                         //using (var _fs = new FileStream(_outputImagePath, FileMode.Create))
