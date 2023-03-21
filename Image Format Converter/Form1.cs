@@ -36,7 +36,7 @@ namespace Image_Format_Converter
         string OutputDir = "";
         string ShowImagePath = "";
         int ProcessValue = -1;
-        string Version = "1.1.2";
+        string Version = "1.1.3";
         public Form1()
         {
             InitializeComponent();
@@ -296,6 +296,7 @@ namespace Image_Format_Converter
             button2.Enabled = !backgroundWorker1.IsBusy;
             button3.Enabled = !backgroundWorker1.IsBusy;
             button4.Enabled = !backgroundWorker1.IsBusy;
+            button8.Enabled = !backgroundWorker1.IsBusy;
             listBox1.Enabled = !backgroundWorker1.IsBusy;
             button7.Enabled = !backgroundWorker1.IsBusy
                               && listBox1.Items.Count > 0
